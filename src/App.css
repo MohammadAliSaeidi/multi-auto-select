@@ -1,5 +1,12 @@
 #root {
   color: var(--color-text-primary);
-  padding: 6rem;
-  padding-top: 15rem;
+}
+
+.test-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: stretch;
+  width: min-content;
 }

@@ -16,7 +16,7 @@ export default function Item(props: Props) {
 	return (
 		<div
 			onClick={() => onSelect(value, isSelected ?? false)}
-			className={`typography-body-small multi-auto-select__item ${
+			className={`multi-auto-select__item ${
 				isSelected ? "multi-auto-select__item--selected" : ""
 			}`}
 		>

@@ -1,4 +1,8 @@
+@import "../../../../../styles/typography.scss";
+
 .multi-auto-select__item {
+	@extend .text-mini;
+
 	padding: 0.125rem 0.75rem;
 	height: 2rem;
 	min-height: 2rem;

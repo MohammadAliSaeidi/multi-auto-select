@@ -1,16 +1,47 @@
-@import "../../../../../styles/typography";
+@import "../../../../../styles/typography.scss";
 
 .multi-auto-select__content {
-	// TODO: this approach is not working. use the
 	max-height: 40dvh;
 	min-width: 6.25rem;
 	overflow-y: auto;
 	display: grid;
 	row-gap: 0.25rem;
 
-	.add-item-instruction {
-		@extend .typography-body-small;
+	.empty-list {
+		@extend .text-muted, .text-mini;
 		text-align: center;
-		color: var(--color-text-secondary);
+	}
+
+	.add-item-instruction {
+		@extend .text-mini;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		text-align: center;
+		color: var(--color-text-muted);
+	}
+
+	.status {
+		@extend .text-mini;
+
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+
+		&.loading {
+			display: grid;
+			justify-content: center;
+			align-items: center;
+			padding-block: 1rem;
+		}
+
+		&.error {
+			& > svg {
+				width: 1.25rem;
+				fill: var(--color-text-muted);
+			}
+		}
 	}
 }

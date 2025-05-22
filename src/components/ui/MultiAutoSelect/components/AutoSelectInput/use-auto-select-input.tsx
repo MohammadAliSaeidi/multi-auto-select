@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDebounce } from "../../../../../hooks/use-debounce";
 import type { Option } from "../../type";
 import type { PropsBase } from "./type";
@@ -15,6 +15,9 @@ export const useAutoSelectInput = (props: Props) => {
 		selectedOptions,
 		visibleSelectedCountLimit,
 		onSearchChange,
+		isPopoverOpen,
+		isError,
+		isLoading,
 	} = props;
 	const [isFocused, setIsFocused] = useState(false);
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -24,6 +27,12 @@ export const useAutoSelectInput = (props: Props) => {
 		value: searchValue,
 		onDebounce: onSearchChange,
 	});
+
+	useEffect(() => {
+		if (!isPopoverOpen) {
+			setSearchValue("");
+		}
+	}, [isPopoverOpen]);
 
 	const getLabel = (): string => {
 		if (selectedOptions === undefined || selectedOptions.length === 0)
@@ -40,6 +49,18 @@ export const useAutoSelectInput = (props: Props) => {
 		);
 	};
 
+	const getValue = () => {
+		if (isError) return "";
+
+		return isFocused ? undefined : getLabel();
+	};
+
+	const getPlaceholder = () => {
+		if (isError || isLoading) return "";
+
+		return isFocused ? "find item..." : placeholder;
+	};
+
 	const handleFocusChange = (newFocus: boolean) => () => {
 		if (newFocus === isFocused) return;
 
@@ -53,5 +74,12 @@ export const useAutoSelectInput = (props: Props) => {
 		setSearchValue(value);
 	};
 
-	return { getLabel, onInputChange, isFocused, inputRef, handleFocusChange };
+	return {
+		onInputChange,
+		isFocused,
+		inputRef,
+		handleFocusChange,
+		getValue,
+		getPlaceholder,
+	};
 };

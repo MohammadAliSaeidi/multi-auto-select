@@ -1,0 +1,53 @@
+.auto-select-input {
+	position: relative;
+
+	& > input {
+		padding-right: 56px;
+	}
+
+	.arrow-icon__wrapper {
+		min-height: fit-content;
+		height: fit-content;
+		position: absolute;
+		top: 50%;
+		right: 8px;
+		transform: translateY(-50%);
+
+		.anchor {
+			width: 24px;
+			height: 24px;
+
+			&.open {
+				transform: rotate(180deg);
+			}
+		}
+
+		svg {
+			fill: var(--color-text-muted);
+		}
+	}
+
+	.status {
+		position: absolute;
+		z-index: 1;
+
+		&.loading {
+			height: 20px;
+			right: 2.25rem;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&.error {
+			height: 24px;
+			top: 50%;
+			left: 24px;
+			transform: translate(-50%, -50%);
+
+			svg {
+				width: 16px;
+				fill: var(--color-text-muted);
+			}
+		}
+	}
+}

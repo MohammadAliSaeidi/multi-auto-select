@@ -3,12 +3,15 @@ import ItemsList from "./components/ItemsList";
 import AutoSelectInput from "./components/AutoSelectInput";
 import type { MultiAutoSelectPropsBase } from "./type";
 import useMultiAutoSelect from "./use-multi-auto-select";
+import type { ReactNode } from "react";
 
 type Props<T> = MultiAutoSelectPropsBase<T> & {
 	optionsData?: T[];
 	placeholder?: string;
 	visibleSelectedCountLimit?: number;
 	isError?: boolean;
+	customError?: ReactNode;
+	onRetry?: () => void;
 };
 
 export default function MultiAutoSelect<T>(props: Props<T>) {
@@ -21,6 +24,9 @@ export default function MultiAutoSelect<T>(props: Props<T>) {
 		defaultValue,
 		isError,
 		isLoading,
+		customError,
+		onRetry,
+		onChange,
 	} = props;
 
 	const {
@@ -34,10 +40,12 @@ export default function MultiAutoSelect<T>(props: Props<T>) {
 		itemsListRef,
 		triggerRef,
 		onPopoverOpenChange,
+		isOpen,
 	} = useMultiAutoSelect({
 		isLoading,
 		optionsData,
 		labelKey,
+		onChange,
 		valueKey,
 		defaultValue,
 	});
@@ -49,15 +57,25 @@ export default function MultiAutoSelect<T>(props: Props<T>) {
 			content={
 				<ItemsList
 					ref={itemsListRef}
+					isError={isError}
+					isLoading={isLoading}
 					options={options}
 					onItemSelect={handleItemSelection}
+					onRetry={onRetry}
 					isAddItemInstructionVisible={
-						searchValue !== "" && options?.length === 0
+						!!searchValue &&
+						searchValue?.length > 0 &&
+						options &&
+						options?.length === 0
 					}
 				/>
 			}
 			trigger={
 				<AutoSelectInput
+					customError={customError}
+					isError={isError}
+					isLoading={isLoading}
+					isPopoverOpen={isOpen}
 					ref={triggerRef}
 					onInputSubmitted={onInputSubmitted}
 					onSearchChange={onSearchChange}

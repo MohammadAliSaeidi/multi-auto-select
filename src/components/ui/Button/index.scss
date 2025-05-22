@@ -7,16 +7,37 @@
 	min-height: 2.5rem;
 	min-width: 4rem;
 	text-align: center;
-	padding: 0.125rem 0.75rem;
 	border-radius: var(--border-radius-md);
-	border: none;
-	background-color: var(--color-primary);
-	color: var(--color-primary-foreground);
+	padding: 0.125rem 0.75rem;
 	cursor: pointer;
 	transition-property: background-color, outline;
+	border: none;
 
-	&:hover {
-		background-color: var(--color-primary-hover);
+	&.button--filled {
+		background-color: var(--color-primary);
+		color: var(--color-primary-foreground);
+		&:hover {
+			background-color: var(--color-primary-hover);
+		}
+	}
+
+	&.button--ghost {
+		color: var(--color-primary);
+		background-color: transparent;
+		gap: 0.25rem;
+
+		&:hover {
+			background-color: var(--color-primary-highlight);
+		}
+
+		&:active {
+			background-color: var(--color-primary-highlight-hover);
+		}
+
+		svg {
+			fill: var(--color-primary);
+			width: 1rem;
+		}
 	}
 
 	.icon {

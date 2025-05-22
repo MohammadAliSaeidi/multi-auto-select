@@ -7,8 +7,9 @@ export type Option = {
 }
 
 export type MultiAutoSelectPropsBase<T> = {
-  defaultValue?: OptionValue[];
+  defaultValue?: Option[];
   valueKey: Extract<keyof T, OptionValue>;
   labelKey: Extract<keyof T, string>;
   isLoading?: boolean;
+  onChange?: (selectedValues: Option[]) => void;
 }

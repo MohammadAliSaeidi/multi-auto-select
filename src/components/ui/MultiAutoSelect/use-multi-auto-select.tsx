@@ -7,7 +7,14 @@ type Props<T> = MultiAutoSelectPropsBase<T> & {
 };
 
 function useMultiAutoSelect<T>(props: Props<T>) {
-	const { isLoading, labelKey, valueKey, optionsData, defaultValue } = props;
+	const {
+		isLoading,
+		labelKey,
+		valueKey,
+		optionsData,
+		defaultValue,
+		onChange,
+	} = props;
 
 	const itemsListRef = useRef<HTMLDivElement>(null);
 	const triggerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +28,9 @@ function useMultiAutoSelect<T>(props: Props<T>) {
 			(item): Option => ({
 				label: item[labelKey] as string,
 				value: item[valueKey] as OptionValue,
-				isSelected: defaultValue?.includes(item[valueKey] as string),
+				isSelected: defaultValue?.some(
+					(option) => option.value === item[valueKey]
+				),
 			})
 		);
 	};
@@ -40,8 +49,11 @@ function useMultiAutoSelect<T>(props: Props<T>) {
 			});
 
 			setOptions(updatedOptions);
+			onChange?.(
+				updatedOptions?.filter((options) => options.isSelected) ?? []
+			);
 		},
-		[options]
+		[onChange, options]
 	);
 
 	const filteredOptions = useMemo(() => {
@@ -92,7 +104,13 @@ function useMultiAutoSelect<T>(props: Props<T>) {
 				isSelected: true,
 			};
 
-			setOptions((prevOptions) => [...(prevOptions ?? []), newOption]);
+			const newOptions = [...(options ?? []), newOption];
+
+			setOptions(newOptions);
+
+			onChange?.(
+				newOptions?.filter((options) => options.isSelected) ?? []
+			);
 		}
 	};
 
@@ -107,6 +125,7 @@ function useMultiAutoSelect<T>(props: Props<T>) {
 		searchValue,
 		itemsListRef,
 		triggerRef,
+		isOpen,
 	};
 }
 

@@ -1,17 +1,14 @@
-.typography-body {
-	font-size: 1rem;
+.text-body {
+	font-size: 0.875rem;
 	line-height: 1.2;
 	font-weight: 400;
 }
 
-.typography-body-small {
-	font-size: 0.875rem;
-	line-height: 1;
-	font-weight: 400;
+.text-muted {
+	color: var(--color-text-muted);
 }
 
-.typography-body-mini {
+.text-mini {
 	font-size: 0.75rem;
-	line-height: 1.1;
 	font-weight: 400;
 }
