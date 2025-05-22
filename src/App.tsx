@@ -39,7 +39,7 @@ function App() {
 	});
 
 	const onSubmit = (data: { carBrand: Option[] }) => {
-		console.log("Selected car brands:", data.carBrand);
+		console.table(data.carBrand);
 	};
 
 	const refetchCarBrands = () => {
@@ -48,14 +48,22 @@ function App() {
 
 	return (
 		<div>
-			<div>
+			<div style={{ marginBottom: "1rem" }}>
 				<p role="note">
 					This form works with mocked data and simulates fetching,
 					loading, and error states. To see the multi auto select
 					component in an error state, enable the error toggle.
 				</p>
+				<p>
+					note: to see submit output of the form, you can check the
+					developer mode of your browser :)
+				</p>
+
+				<label htmlFor="error-toggle">Enable Error State</label>
 				<input
+					checked={isError}
 					type="checkbox"
+					id="error-toggle"
 					onChange={(e) => setIsError(e.target.checked)}
 				/>
 			</div>
@@ -79,7 +87,9 @@ function App() {
 						/>
 					)}
 				/>
-				<Button type="submit">Submit</Button>
+				<Button disabled={isError} type="submit">
+					Submit
+				</Button>
 			</form>
 		</div>
 	);
