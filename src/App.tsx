@@ -2,7 +2,7 @@ import "./App.css";
 import MultiAutoSelect from "./components/ui/MultiAutoSelect";
 import type { CarBrand } from "./types/CarBrandType";
 import mockBrands from "./mock/mock_carbrands.json";
-import { Controller, set, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import type { Option } from "./components/ui/MultiAutoSelect/type";
 import { useEffect, useState } from "react";
 import Button from "./components/ui/Button";
@@ -68,7 +68,7 @@ function App() {
 							labelKey="name"
 							valueKey="id"
 							onRetry={() => refetchCarBrands()}
-							optionsData={[]}
+							optionsData={optionsData}
 							defaultValue={field.value}
 							isLoading={isBrandsLoading}
 							placeholder="Select car brands"
