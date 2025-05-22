@@ -1,0 +1,15 @@
+.input {
+	min-height: 2.5rem;
+	min-width: 10rem;
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-md);
+	outline: 0 solid var(--color-primary-highlight);
+	transition-property: outline-width, border-color;
+	color: var(--color-text-primary);
+
+	&:focus {
+		border-color: var(--color-primary);
+		outline-width: 5px;
+	}
+}

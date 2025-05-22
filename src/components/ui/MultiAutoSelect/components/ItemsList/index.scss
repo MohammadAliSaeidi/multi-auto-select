@@ -1,0 +1,16 @@
+@import "../../../../../styles/typography";
+
+.multi-auto-select__content {
+	// TODO: this approach is not working. use the
+	max-height: 40dvh;
+	min-width: 6.25rem;
+	overflow-y: auto;
+	display: grid;
+	row-gap: 0.25rem;
+
+	.add-item-instruction {
+		@extend .typography-body-small;
+		text-align: center;
+		color: var(--color-text-secondary);
+	}
+}

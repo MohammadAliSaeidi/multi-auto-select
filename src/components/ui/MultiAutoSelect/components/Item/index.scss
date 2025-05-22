@@ -1,0 +1,31 @@
+.multi-auto-select__item {
+	padding: 0.125rem 0.75rem;
+	height: 2rem;
+	min-height: 2rem;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	border-radius: var(--border-radius-sm);
+	cursor: pointer;
+	min-width: 9.375rem;
+
+	&:hover {
+		color: var(--color-primary);
+		background-color: var(--color-primary-highlight-hover);
+	}
+}
+
+.multi-auto-select__item--selected {
+	color: var(--color-primary);
+	background-color: var(--color-primary-highlight);
+}
+
+.multi-auto-select__item-icon {
+	fill: var(--color-primary);
+	width: 1rem;
+	height: 1rem;
+}

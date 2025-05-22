@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Toyota",
+    "year": 2020
+  },
+  {
+    "id": 2,
+    "name": "Honda",
+    "year": 2019
+  },
+  {
+    "id": 3,
+    "name": "Ford",
+    "year": 2021
+  },
+  {
+    "id": 4,
+    "name": "Chevrolet",
+    "year": 2022
+  },
+  {
+    "id": 5,
+    "name": "Nissan",
+    "year": 2023
+  },
+  {
+    "id": 6,
+    "name": "Hyundai",
+    "year": 2020
+  },
+  {
+    "id": 7,
+    "name": "Kia",
+    "year": 2018
+  }
+]

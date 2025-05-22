@@ -1,5 +1,5 @@
 @import './styles/colors.scss';
-@import './styles/shadows.scss';
+@import './styles/typography.scss';
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -11,5 +11,18 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --border-radius: .75rem;
+  --border-radius-sm: .25rem;
+  --border-radius-md: 0.75rem;
+  --border-radius-lg: 1rem;
+
+  --transition-duration: 200ms;
+}
+
+body {
+  background-color: #FAFAFA;
+}
+
+* {
+  transition-duration: var(--transition-duration);
+  box-sizing: border-box;
 }
