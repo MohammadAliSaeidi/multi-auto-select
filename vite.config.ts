@@ -9,4 +9,7 @@ export default defineConfig({
     include: '**/*.svg?react',
   }),
   ],
+  resolve: {
+    alias: [{ find: "@", replacement: "/src" }],
+  },
 })
